@@ -25,7 +25,8 @@ config.h:
 	cp config.def.h $@
 
 diff:
-	git diff config.def.h config.h > patches/keybinds.diff
+	mv patches/keybinds.diff patches/keybinds.diff.back
+	git diff --no-index config.def.h config.h > patches/keybinds.diff
 
 requirements:
 	nala install libx11-dev libxft-dev libxinerama-dev libyajl-dev xdotool
