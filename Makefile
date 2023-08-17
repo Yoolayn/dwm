@@ -22,10 +22,13 @@ ${OBJ}: config.h config.mk
 config.h:
 	cp config.def.h $@
 
+key-diff:
+	git diff e1e4da4 -- config.h > patches/keybinds.diff
+
 requirements:
 	nala install libx11-dev libxft-dev libxinerama-dev libyajl-dev
 
-setup:
+setup: requirements
 	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
 
 keybinds:
@@ -53,7 +56,7 @@ dist: clean
 	gzip dwm-${VERSION}.tar
 	rm -rf dwm-${VERSION}
 
-install: all
+install: all keybinds
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm dwm-msg ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm

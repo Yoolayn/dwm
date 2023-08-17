@@ -1,5 +1,5 @@
 diff --git a/config.h b/config.h
-index 9e394b6..af7c0bc 100644
+index 9e394b6..73e2096 100644
 --- a/config.h
 +++ b/config.h
 @@ -50,7 +50,7 @@ static const Layout layouts[] = {
@@ -16,7 +16,7 @@ index 9e394b6..af7c0bc 100644
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 -static const char *termcmd[]  = { "st", NULL };
-+static const char *termcmd[]  = { "Alacritty", NULL };
++static const char *termcmd[]  = { "alacritty", NULL };
 +static const char *roficmd[]  = { "rofi", "-modi", "drun", "-show", "drun", NULL};
  
  static const Key keys[] = {
@@ -24,7 +24,7 @@ index 9e394b6..af7c0bc 100644
 -	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 -	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 +	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
-+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = termcmd } },
++	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
  	{ MODKEY,                       XK_b,      togglebar,      {0} },
  	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
  	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -33,7 +33,29 @@ index 9e394b6..af7c0bc 100644
  	{ MODKEY,                       XK_Tab,    view,           {0} },
  	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 -	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-+	{ MODKEY,                       XK_Return, setlayout,      {.v = &layouts[0]} },
++	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
  	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
  	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
  	{ MODKEY,                       XK_space,  setlayout,      {0} },
+@@ -119,3 +120,21 @@ static const Button buttons[] = {
+ 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+ };
+ 
++static const char *ipcsockpath = "/tmp/dwm.sock";
++static IPCCommand ipccommands[] = {
++  IPCCOMMAND(  view,                1,      {ARG_TYPE_UINT}   ),
++  IPCCOMMAND(  toggleview,          1,      {ARG_TYPE_UINT}   ),
++  IPCCOMMAND(  tag,                 1,      {ARG_TYPE_UINT}   ),
++  IPCCOMMAND(  toggletag,           1,      {ARG_TYPE_UINT}   ),
++  IPCCOMMAND(  tagmon,              1,      {ARG_TYPE_UINT}   ),
++  IPCCOMMAND(  focusmon,            1,      {ARG_TYPE_SINT}   ),
++  IPCCOMMAND(  focusstack,          1,      {ARG_TYPE_SINT}   ),
++  IPCCOMMAND(  zoom,                1,      {ARG_TYPE_NONE}   ),
++  IPCCOMMAND(  incnmaster,          1,      {ARG_TYPE_SINT}   ),
++  IPCCOMMAND(  killclient,          1,      {ARG_TYPE_SINT}   ),
++  IPCCOMMAND(  togglefloating,      1,      {ARG_TYPE_NONE}   ),
++  IPCCOMMAND(  setmfact,            1,      {ARG_TYPE_FLOAT}  ),
++  IPCCOMMAND(  setlayoutsafe,       1,      {ARG_TYPE_PTR}    ),
++  IPCCOMMAND(  quit,                1,      {ARG_TYPE_NONE}   )
++};
++
