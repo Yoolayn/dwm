@@ -28,6 +28,11 @@ requirements:
 setup:
 	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
 
+keybinds:
+	rm config.h
+	cp config.def.h config.h
+	patch -i patches/keybinds.diff
+
 scrub:
 	rm *.rej *.orig
 
