@@ -46,7 +46,7 @@ keybinds:
 scrub:
 	rm *.rej *.orig
 
-dwm: ${OBJ}
+dwm: ${OBJ} keybinds
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 dwm-msg: dwm-msg.o
@@ -63,7 +63,7 @@ dist: clean
 	gzip dwm-${VERSION}.tar
 	rm -rf dwm-${VERSION}
 
-install: all keybinds
+install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm dwm-msg ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
