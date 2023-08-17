@@ -22,6 +22,12 @@ ${OBJ}: config.h config.mk
 config.h:
 	cp config.def.h $@
 
+requirements:
+	nala install libx11-dev libxft-dev libxinerama-dev libyajl-dev
+
+setup:
+	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
+
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
