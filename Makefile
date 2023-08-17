@@ -6,6 +6,8 @@ include config.mk
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
 
+new: requirements setup install
+
 all: options dwm dwm-msg
 
 options:
@@ -22,7 +24,7 @@ ${OBJ}: config.h config.mk
 config.h:
 	cp config.def.h $@
 
-key-diff:
+diff:
 	git diff e1e4da4 -- config.h > patches/keybinds.diff
 
 requirements:
