@@ -33,6 +33,11 @@ requirements:
 setup: requirements
 	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
 
+autostart:
+	rm ~/.dwm/autostart.sh || true
+	mkdir -p ~/.dwm/
+	cp ./autostart.sh ~/.dwm/autostart.sh
+
 keybinds:
 	rm config.h
 	cp config.def.h config.h
