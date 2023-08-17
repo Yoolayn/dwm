@@ -46,7 +46,7 @@ keybinds:
 scrub:
 	rm *.rej *.orig
 
-dwm: ${OBJ} keybinds
+dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 dwm-msg: dwm-msg.o
