@@ -28,6 +28,9 @@ requirements:
 setup:
 	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
 
+scrub:
+	rm *.rej *.orig
+
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
