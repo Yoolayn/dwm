@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.h
-index 0662dd4..4b16d8a 100644
+index 52eb5ac..1977d85 100644
 --- a/config.def.h
 +++ b/config.h
 @@ -38,7 +38,9 @@ static const Rule rules[] = {
@@ -36,18 +36,9 @@ index 0662dd4..4b16d8a 100644
 -	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 +	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
 +	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
-+	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
++	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = termcmd } },
 +	{ MODKEY,                       XK_s,      spawn,          SHCMD("maim --select | xclip -selection clipboard -t image/png && dunstify 'Screenshot copied to clipboard'") },
 +	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maim --select \"$HOME/Pictures/Screenshots/$(date +\"%Y-%m-%d_%H-%M-%S\")-screenshot.png\" && dunstify \"Screenshot saved to ~/Pictures/Screenshots/$(date +\"%Y-%m-%d_%H-%M-%S\")-screenshot.png\"") },
  	{ MODKEY,                       XK_b,      togglebar,      {0} },
  	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
  	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-@@ -85,7 +91,7 @@ static const Key keys[] = {
- 	{ MODKEY,                       XK_Return, zoom,           {0} },
- 	{ MODKEY,                       XK_Tab,    view,           {0} },
- 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
--	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
- 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
- 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
- 	{ MODKEY,                       XK_space,  setlayout,      {0} },
