@@ -29,7 +29,7 @@ diff:
 	git diff --no-index config.def.h config.h > patches/keybinds.diff
 
 requirements:
-	nala install libx11-dev libxft-dev libxinerama-dev libyajl-dev xdotool
+	pacman -S libx11 libxft libxinerama yajl xdotool
 
 setup: requirements
 	cp ./dwm.desktop /usr/share/xsessions/dwm.desktop
