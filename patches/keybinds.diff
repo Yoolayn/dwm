@@ -1,19 +1,20 @@
 diff --git a/config.def.h b/config.h
-index 52eb5ac..1977d85 100644
+index 52eb5ac..80254f7 100644
 --- a/config.def.h
 +++ b/config.h
-@@ -38,7 +38,9 @@ static const Rule rules[] = {
+@@ -38,7 +38,10 @@ static const Rule rules[] = {
  	 */
  	/* class      instance    title       tags mask     isfloating   monitor */
  	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 -	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-+	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
++	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
++	{ "Opera developer",NULL, NULL,       1 << 1,       0,           -1 },
 +	{ "discord",  NULL,       NULL,       1 << 4,       0,           -1 },
 +	{ "Spotify",  NULL,       NULL,       1 << 3,       0,           -1 },
  };
  
  /* layout(s) */
-@@ -56,7 +58,7 @@ static const Layout layouts[] = {
+@@ -56,7 +59,7 @@ static const Layout layouts[] = {
  };
  
  /* key definitions */
@@ -22,7 +23,7 @@ index 52eb5ac..1977d85 100644
  #define TAGKEYS(KEY,TAG) \
  	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-@@ -69,12 +71,16 @@ static const Layout layouts[] = {
+@@ -69,12 +72,17 @@ static const Layout layouts[] = {
  /* commands */
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
@@ -35,6 +36,7 @@ index 52eb5ac..1977d85 100644
 -	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 -	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 +	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
++	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 +	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
 +	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = termcmd } },
 +	{ MODKEY,                       XK_s,      spawn,          SHCMD("maim --select | xclip -selection clipboard -t image/png && dunstify 'Screenshot copied to clipboard'") },
@@ -42,3 +44,12 @@ index 52eb5ac..1977d85 100644
  	{ MODKEY,                       XK_b,      togglebar,      {0} },
  	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
  	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+@@ -82,7 +90,7 @@ static const Key keys[] = {
+ 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+ 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+-	{ MODKEY,                       XK_Return, zoom,           {0} },
++	// { MODKEY,                       XK_Return, zoom,           {0} },
+ 	{ MODKEY,                       XK_Tab,    view,           {0} },
+ 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+ 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
