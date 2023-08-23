@@ -1,7 +1,7 @@
 #!/bin/bash
 
 picom &
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # dwmblocks &
 ~/bin/bar.sh &
 discord &
